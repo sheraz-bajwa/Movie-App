@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 
-class TrendingMovies extends StatelessWidget {
-  final List trending;
-  const TrendingMovies({super.key, required this.trending});
+import 'package:flutter/material.dart';
+
+class Moviessss extends StatelessWidget {
+  final List movies;
+  const Moviessss({super.key, required this.movies});
 
   @override
   Widget build(BuildContext context) {
@@ -13,14 +15,14 @@ class TrendingMovies extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text('trending Moviesss'),
+            Text('TopRated Moviesss'),
             Padding(
               padding: const EdgeInsets.all(12.0),
               child: Container(
                 height: 300,
                 child: ListView.builder(
                     scrollDirection: Axis.horizontal,
-                    itemCount: trending.length,
+                    itemCount: movies.length,
                     itemBuilder: (context, index) {
                       return InkWell(
                         onTap: () {},
@@ -35,7 +37,7 @@ class TrendingMovies extends StatelessWidget {
                                     image: DecorationImage(
                                       image: NetworkImage(
                                           'https://image.tmdb.org/t/p/w500' +
-                                              trending[index]['poster_path']),
+                                              movies[index]['poster_path']),
                                     ),
                                   ),
                                   height: 200,
@@ -46,8 +48,8 @@ class TrendingMovies extends StatelessWidget {
                                 Container(
                                   height: 70,
                                   child: Text(
-                                    trending[index]['title'] != null
-                                        ? trending[index]['title']
+                                    movies[index]['title'] != null
+                                        ? movies[index]['title']
                                         : ['loading'],
                                     style: TextStyle(
                                         color: Colors.amber, fontSize: 20),

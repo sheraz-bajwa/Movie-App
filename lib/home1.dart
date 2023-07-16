@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:movieapp/services.dart';
 import 'package:movieapp/trendingMovies.dart';
 import 'package:tmdb_api/tmdb_api.dart';
 
@@ -15,8 +16,8 @@ class _HomeState extends State<Home> {
   final readaccestoken =
       'eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIzMGI5NzFiOGQwMjI3MDNiYWU2ZmU1NmU4ZGUzOTFkNiIsInN1YiI6IjY0YjE3MTRiMjUzZmFiMGMzNzc1MTE4ZSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.eZiYr4LTWVDEwG-rBCQvUoUXRGLXMjP__z6CQC0l8dA';
   List trendingmovies = [];
-  // List topratedmovies = [];
-  // List tv = [];
+  List topratedmovies = [];
+  List tv = [];
 
   @override
   void initState() {
@@ -34,13 +35,13 @@ class _HomeState extends State<Home> {
     );
 
     Map trendingresult = await tmdbWithCustomLogs.v3.trending.getTrending();
-    // Map topratedresult = await tmdbWithCustomLogs.v3.movies.getTopRated();
-    //Map tvresult = await tmdbWithCustomLogs.v3.tv.getPouplar();
-    print((trendingresult));
+    Map topratedresult = await tmdbWithCustomLogs.v3.movies.getTopRated();
+    Map tvresult = await tmdbWithCustomLogs.v3.tv.getPouplar();
+    print((topratedresult));
     setState(() {
       trendingmovies = trendingresult['results'];
-//      topratedmovies = topratedresult['results'];
-      //tv = tvresult['results'];
+      topratedmovies = topratedresult['results'];
+      tv = tvresult['results'];
     });
   }
 
@@ -54,6 +55,12 @@ class _HomeState extends State<Home> {
         children: [
           TrendingMovies(
             trending: trendingmovies,
+          ),
+          SizedBox(
+            height: 20,
+          ),
+          Moviessss(
+            movies: topratedmovies,
           )
         ],
       ),

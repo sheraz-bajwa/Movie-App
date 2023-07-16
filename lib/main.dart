@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:movieapp/home.dart';
 import 'package:movieapp/home1.dart';
 import 'package:tmdb_api/tmdb_api.dart';
 
