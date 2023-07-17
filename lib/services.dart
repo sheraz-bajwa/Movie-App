@@ -26,7 +26,7 @@ class Moviessss extends StatelessWidget {
                     return InkWell(
                       onTap: () {},
                       child: Padding(
-                        padding: const EdgeInsets.all(12.0),
+                        padding: const EdgeInsets.all(10.0),
                         child: Container(
                           decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(20),

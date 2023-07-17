@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:movieapp/Fonts.dart';
+import 'package:movieapp/Slider.dart';
+import 'package:movieapp/courser.dart';
 import 'package:movieapp/services.dart';
 import 'package:movieapp/trendingMovies.dart';
 import 'package:tmdb_api/tmdb_api.dart';
@@ -38,7 +40,7 @@ class _HomeState extends State<Home> {
 
     Map trendingresult = await tmdbWithCustomLogs.v3.trending.getTrending();
     Map topratedresult = await tmdbWithCustomLogs.v3.movies.getTopRated();
-    Map tvresult = await tmdbWithCustomLogs.v3.tv.getPouplar();
+    Map tvresult = await tmdbWithCustomLogs.v3.tv.getPopular();
     // print((topratedresult));
     setState(() {
       trendingmovies = trendingresult['results'];
@@ -51,21 +53,32 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Color.fromARGB(255, 49, 66, 74),
+      drawer: DrawerButtonIcon(),
       appBar: AppBar(
+        actions: [
+          IconButton(
+            onPressed: () {},
+            icon: Icon(Icons.search),
+            iconSize: 30,
+            color: Color.fromARGB(255, 168, 23, 31),
+          )
+        ],
         backgroundColor: Color.fromARGB(255, 39, 48, 55),
         title: text(data: 'MovieB', color: Colors.white, size: 30),
       ),
       body: ListView(
         children: [
-          TrendingMovies(
-            trending: trendingmovies,
-          ),
-          SizedBox(
-            height: 20,
-          ),
-          Moviessss(
-            movies: topratedmovies,
-          )
+          // TrendingMovies(
+          //   trending: trendingmovies,
+          // ),
+          // SizedBox(
+          //   height: 20,
+          // ),
+          // Moviessss(
+          //   movies: topratedmovies,
+          // )
+          // Sider(slider: tv)
+          CarouselDemo()
         ],
       ),
     );

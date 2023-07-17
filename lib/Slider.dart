@@ -1,25 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:movieapp/Fonts.dart';
 
-class TrendingMovies extends StatelessWidget {
-  final List trending;
-  const TrendingMovies({super.key, required this.trending});
+class Sider extends StatelessWidget {
+  const Sider({super.key, required this.slider});
+  final List slider;
 
   @override
   Widget build(BuildContext context) {
     return Container(
       child: Padding(
-        padding: EdgeInsets.all(15),
+        padding: EdgeInsets.all(10),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            text(data: 'Trending Moviesss', color: Colors.white, size: 30),
+            text(data: 'TopRated Moviesss', color: Colors.white, size: 30),
             Container(
               height: 300,
               child: ListView.builder(
                   scrollDirection: Axis.horizontal,
-                  itemCount: trending.length,
+                  itemCount: slider.length,
                   itemBuilder: (context, index) {
                     return InkWell(
                       onTap: () {},
@@ -29,7 +29,6 @@ class TrendingMovies extends StatelessWidget {
                           decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(20),
                               color: Colors.black),
-                          //margin: EdgeInsets.all(10),
                           height: 150,
                           width: 200,
                           child: Column(
@@ -41,24 +40,24 @@ class TrendingMovies extends StatelessWidget {
                                     fit: BoxFit.cover,
                                     image: NetworkImage(
                                         'https://image.tmdb.org/t/p/w500' +
-                                            trending[index]['poster_path']),
+                                            slider[index]['poster_path']),
                                   ),
                                 ),
-                                width: 200,
                                 height: 200,
+                                width: 200,
                               ),
                               SizedBox(
                                 height: 5,
                               ),
-                              Container(
-                                height: 70,
-                                child: text(
-                                    data: trending[index]['title'] != null
-                                        ? trending[index]['title']
-                                        : ['loading'],
-                                    color: Colors.white,
-                                    size: 20),
-                              )
+                              // Container(
+                              //   height: 70,
+                              //   child: text(
+                              //       data: slider[index]['title'] != null
+                              //           ? slider[index]['title']
+                              //           : ['loading'],
+                              //       color: Colors.white,
+                              //       size: 20),
+                              // )
                             ],
                           ),
                         ),
