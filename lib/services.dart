@@ -30,17 +30,21 @@ class Moviessss extends StatelessWidget {
                           padding: const EdgeInsets.all(12.0),
                           child: Container(
                             height: 150,
+                            width: 200,
                             child: Column(
                               children: [
                                 Container(
                                   decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(20),
                                     image: DecorationImage(
+                                      fit: BoxFit.cover,
                                       image: NetworkImage(
                                           'https://image.tmdb.org/t/p/w500' +
                                               movies[index]['poster_path']),
                                     ),
                                   ),
                                   height: 200,
+                                  width: 200,
                                 ),
                                 SizedBox(
                                   height: 5,

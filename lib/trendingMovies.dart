@@ -27,17 +27,22 @@ class TrendingMovies extends StatelessWidget {
                         child: Padding(
                           padding: const EdgeInsets.all(12.0),
                           child: Container(
+                            //margin: EdgeInsets.all(10),
                             height: 150,
+                            width: 200,
                             child: Column(
                               children: [
                                 Container(
                                   decoration: BoxDecoration(
+                                    //borderRadius: BorderRadius.circular(20),
                                     image: DecorationImage(
+                                      fit: BoxFit.cover,
                                       image: NetworkImage(
                                           'https://image.tmdb.org/t/p/w500' +
                                               trending[index]['poster_path']),
                                     ),
                                   ),
+                                  width: 200,
                                   height: 200,
                                 ),
                                 SizedBox(
