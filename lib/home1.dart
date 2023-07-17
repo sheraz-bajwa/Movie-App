@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:movieapp/Fonts.dart';
 import 'package:movieapp/services.dart';
 import 'package:movieapp/trendingMovies.dart';
 import 'package:tmdb_api/tmdb_api.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -37,7 +39,7 @@ class _HomeState extends State<Home> {
     Map trendingresult = await tmdbWithCustomLogs.v3.trending.getTrending();
     Map topratedresult = await tmdbWithCustomLogs.v3.movies.getTopRated();
     Map tvresult = await tmdbWithCustomLogs.v3.tv.getPouplar();
-    print((topratedresult));
+    // print((topratedresult));
     setState(() {
       trendingmovies = trendingresult['results'];
       topratedmovies = topratedresult['results'];
@@ -48,8 +50,10 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Color.fromARGB(255, 49, 66, 74),
       appBar: AppBar(
-        title: Text('Hello'),
+        backgroundColor: Color.fromARGB(255, 39, 48, 55),
+        title: text(data: 'MovieB', color: Colors.white, size: 30),
       ),
       body: ListView(
         children: [
