@@ -41,7 +41,7 @@ class _HomeState extends State<Home> {
     Map trendingresult = await tmdbWithCustomLogs.v3.trending.getTrending();
     Map topratedresult = await tmdbWithCustomLogs.v3.movies.getTopRated();
     Map tvresult = await tmdbWithCustomLogs.v3.tv.getPopular();
-    // print((topratedresult));
+    print((topratedresult));
     setState(() {
       trendingmovies = trendingresult['results'];
       topratedmovies = topratedresult['results'];
@@ -68,17 +68,15 @@ class _HomeState extends State<Home> {
       ),
       body: ListView(
         children: [
-          // TrendingMovies(
-          //   trending: trendingmovies,
-          // ),
-          // SizedBox(
-          //   height: 20,
-          // ),
-          // Moviessss(
-          //   movies: topratedmovies,
-          // )
-          // Sider(slider: tv)
-          CarouselDemo()
+          
+          CarouselDemo(),
+          TrendingMovies(
+            trending: trendingmovies,
+          ),
+          Moviessss(
+            movies: topratedmovies,
+          ),
+          Sider(slider: tv)
         ],
       ),
     );

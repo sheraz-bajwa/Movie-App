@@ -8,20 +8,17 @@ class CarouselDemo extends StatefulWidget {
 
 class _CarouselDemoState extends State<CarouselDemo> {
   int _currentImageIndex = 0;
-  List<String> _imageUrls = [
-    'https://example.com/image1.jpg',
-    'https://example.com/image2.jpg',
-    'https://example.com/image3.jpg',
+  final List<String> _imageUrls = [
+    'https://www.peakpx.com/en/hd-wallpaper-desktop-ajgby',
+    'https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.socialnews.xyz%2F2020%2F05%2F21%2Fthe-old-guard-movie-hd-poster%2F&psig=AOvVaw3ZwDYuVqQdbcysrl5cfZ7j&ust=1689752053556000&source=images&cd=vfe&opi=89978449&ved=0CA0QjRxqFwoTCIj8xorfl4ADFQAAAAAdAAAAABAJ',
+    'https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.peakpx.com%2Fen%2Fhd-wallpaper-desktop-ajgby&psig=AOvVaw3ZwDYuVqQdbcysrl5cfZ7j&ust=1689752053556000&source=images&cd=vfe&opi=89978449&ved=0CA0QjRxqFwoTCIj8xorfl4ADFQAAAAAdAAAAABAR',
     // Add more image URLs here
   ];
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Image Carousel Slider Demo'),
-      ),
-      body: Column(
+    return Container(
+      child: Column(
         children: [
           CarouselSlider(
             options: CarouselOptions(
@@ -61,20 +58,11 @@ class _CarouselDemoState extends State<CarouselDemo> {
                 margin: EdgeInsets.symmetric(vertical: 10.0, horizontal: 2.0),
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
-                  color: _currentImageIndex == index
-                      ? Colors.blue
-                      : Colors.grey,
+                  color:
+                      _currentImageIndex == index ? Colors.blue : Colors.grey,
                 ),
               );
             }).toList(),
-          ),
-          SizedBox(height: 20),
-          ElevatedButton(
-            onPressed: () {
-              // Add your custom action when the button is pressed
-              print('Button pressed for image at index $_currentImageIndex');
-            },
-            child: Text('Do Something'),
           ),
         ],
       ),
