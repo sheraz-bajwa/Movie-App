@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:movieapp/Fonts.dart';
+import 'package:movieapp/discription.dart';
 
 class TrendingMovies extends StatelessWidget {
   final List trending;
@@ -22,7 +23,36 @@ class TrendingMovies extends StatelessWidget {
                   itemCount: trending.length,
                   itemBuilder: (context, index) {
                     return InkWell(
-                      onTap: () {},
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => Description(
+                                    // cast: '',
+                                    img: 'https://image.tmdb.org/t/p/w500' +
+                                        trending[index]['backdrop_path'],
+                                    story: trending[index]['overview'] != null
+                                        ? trending[index]['overview']
+                                        : ['loading'],
+                                    title: trending[index]['title'] != null
+                                        ? trending[index]['title']
+                                        : ['loading'],
+                                    lang: trending[index]
+                                                ['original_language'] !=
+                                            null
+                                        ? trending[index]['original_language']
+                                        : ['loading'],
+                                    // vote:
+                                    //     trending[index]['vote_average'] != null
+                                    //         ? trending[index]['vote_average']
+                                    //         : ['loading'],
+                                    // Date:
+                                    //     trending[index]['release_date'] != null
+                                    //         ? trending[index]['release_date']
+                                    //         : ['loading'],
+                                  )),
+                        );
+                      },
                       child: Padding(
                         padding: const EdgeInsets.all(10.0),
                         child: Container(
