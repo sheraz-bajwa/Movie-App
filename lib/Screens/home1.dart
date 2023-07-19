@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:movieapp/Fonts.dart';
+import 'package:movieapp/Fonts/Fonts.dart';
+import 'package:movieapp/Screens/Tv_shows.dart';
 import 'package:movieapp/Slider.dart';
 import 'package:movieapp/courser.dart';
-import 'package:movieapp/services.dart';
-import 'package:movieapp/trendingMovies.dart';
+import 'package:movieapp/Screens/Top_Rated_Movies.dart';
+import 'package:movieapp/Screens/Trending_Movies.dart';
 import 'package:tmdb_api/tmdb_api.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -40,8 +41,8 @@ class _HomeState extends State<Home> {
 
     Map trendingresult = await tmdbWithCustomLogs.v3.trending.getTrending();
     Map topratedresult = await tmdbWithCustomLogs.v3.movies.getTopRated();
-    Map tvresult = await tmdbWithCustomLogs.v3.tv.getPopular();
-    print((topratedresult));
+    Map tvresult = await tmdbWithCustomLogs.v3.tv.getTopRated();
+    print((tv));
     setState(() {
       trendingmovies = trendingresult['results'];
       topratedmovies = topratedresult['results'];
@@ -68,15 +69,15 @@ class _HomeState extends State<Home> {
       ),
       body: ListView(
         children: [
-          
-          CarouselDemo(),
+          Tv_Shows(
+            Tv_show: tv,
+          ),
           TrendingMovies(
             trending: trendingmovies,
           ),
           Moviessss(
             movies: topratedmovies,
           ),
-          Sider(slider: tv)
         ],
       ),
     );

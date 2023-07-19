@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:movieapp/Fonts.dart';
+import 'package:movieapp/Fonts/Fonts.dart';
 
 class Sider extends StatelessWidget {
   const Sider({super.key, required this.slider});
