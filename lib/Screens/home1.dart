@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:movieapp/Fonts/Fonts.dart';
+import 'package:movieapp/wigets/Fonts.dart';
 import 'package:movieapp/Screens/Tv_shows.dart';
-import 'package:movieapp/Slider.dart';
-import 'package:movieapp/courser.dart';
+import 'package:movieapp/wigets/courser.dart';
 import 'package:movieapp/Screens/Top_Rated_Movies.dart';
 import 'package:movieapp/Screens/Trending_Movies.dart';
+import 'package:movieapp/wigets/SideBar.dart';
+import 'package:sidebarx/sidebarx.dart';
 import 'package:tmdb_api/tmdb_api.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -54,7 +55,7 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Color.fromARGB(255, 49, 66, 74),
-      drawer: DrawerButtonIcon(),
+      drawer: ExampleSidebarX(),drawerScrimColor: Colors.white,
       appBar: AppBar(
         actions: [
           IconButton(
@@ -69,6 +70,7 @@ class _HomeState extends State<Home> {
       ),
       body: ListView(
         children: [
+          CarouselDemo(),
           Tv_Shows(
             Tv_show: tv,
           ),

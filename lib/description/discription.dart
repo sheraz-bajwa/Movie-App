@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:movieapp/Fonts/Fonts.dart';
+import 'package:movieapp/wigets/Fonts.dart';
 
 class Description extends StatefulWidget {
   String img, img2;

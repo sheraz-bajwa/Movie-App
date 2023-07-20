@@ -39,6 +39,7 @@ dependencies:
   http: ^1.1.0
   google_fonts: ^5.1.0
   carousel_slider: ^4.2.1
+  sidebarx: ^0.16.0
 
 dev_dependencies:
   flutter_test:
@@ -64,9 +65,15 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   assets:
-  - assets/1.jpeg
-  - assets/2.jpeg
-  - assets/3.jpeg
+  - assets/ebravo.jpg
+  - assets/movie1.jpg
+  - assets/movie2.jpg
+  - assets/movie3.jpg
+  - assets/movie4.jpg
+  - assets/peaky.jpg
+  - assets/Witcher.jpg
+  - assets/GOT.jpg
+  - assets/MyTime.png
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

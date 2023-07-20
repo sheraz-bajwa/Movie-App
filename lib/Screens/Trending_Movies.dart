@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:movieapp/Fonts/Fonts.dart';
+import 'package:movieapp/wigets/Fonts.dart';
 import 'package:movieapp/description/discription.dart';
 
 class TrendingMovies extends StatelessWidget {
@@ -10,7 +10,7 @@ class TrendingMovies extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       child: Padding(
-        padding: EdgeInsets.all(15),
+        padding: EdgeInsets.all(10),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -45,9 +45,9 @@ class TrendingMovies extends StatelessWidget {
                                     vote: trending[index]['vote_average']
                                         .toString(),
                                     Date: trending[index]['release_date']
-                                        .toString(), 
-                                        img2: 'https://image.tmdb.org/t/p/w500' +
-                                            trending[index]['poster_path'],
+                                        .toString(),
+                                    img2: 'https://image.tmdb.org/t/p/w500' +
+                                        trending[index]['poster_path'],
                                   )),
                         );
                       },

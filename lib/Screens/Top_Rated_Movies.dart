@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:flutter/material.dart';
-import 'package:movieapp/Fonts/Fonts.dart';
+import 'package:movieapp/wigets/Fonts.dart';
 import 'package:movieapp/description/discription.dart';
 
 class Moviessss extends StatelessWidget {

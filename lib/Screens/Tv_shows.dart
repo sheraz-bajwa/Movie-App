@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:flutter/material.dart';
-import 'package:movieapp/Fonts/Fonts.dart';
+import 'package:movieapp/wigets/Fonts.dart';
 import 'package:movieapp/description/discription.dart';
 
 class Tv_Shows extends StatelessWidget {
@@ -26,33 +26,7 @@ class Tv_Shows extends StatelessWidget {
                   itemCount: Tv_show.length,
                   itemBuilder: (context, index) {
                     return InkWell(
-                      onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => Description(
-                                    // cast: '',
-                                    img: 'https://image.tmdb.org/t/p/w500' +
-                                        Tv_show[index]['backdrop_path'],
-                                    story: Tv_show[index]['overview'] != null
-                                        ? Tv_show[index]['overview']
-                                        : ['loading'],
-                                    title: Tv_show[index]['title'] != null
-                                        ? Tv_show[index]['title']
-                                        : ['loading'],
-                                    lang: Tv_show[index]['original_language'] !=
-                                            null
-                                        ? Tv_show[index]['original_language']
-                                        : ['loading'],
-                                    vote: Tv_show[index]['vote_average']
-                                        .toString(),
-                                    Date: Tv_show[index]['release_date']
-                                        .toString(),
-                                    img2: 'https://image.tmdb.org/t/p/w500' +
-                                        Tv_show[index]['poster_path'],
-                                  )),
-                        );
-                      },
+                      onTap: () {},
                       child: Padding(
                         padding: const EdgeInsets.all(10.0),
                         child: Container(

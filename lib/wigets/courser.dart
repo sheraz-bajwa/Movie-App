@@ -9,17 +9,27 @@ class CarouselDemo extends StatefulWidget {
 class _CarouselDemoState extends State<CarouselDemo> {
   int _currentImageIndex = 0;
   final List<String> _imageUrls = [
-    'https://www.peakpx.com/en/hd-wallpaper-desktop-ajgby',
-    'https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.socialnews.xyz%2F2020%2F05%2F21%2Fthe-old-guard-movie-hd-poster%2F&psig=AOvVaw3ZwDYuVqQdbcysrl5cfZ7j&ust=1689752053556000&source=images&cd=vfe&opi=89978449&ved=0CA0QjRxqFwoTCIj8xorfl4ADFQAAAAAdAAAAABAJ',
-    'https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.peakpx.com%2Fen%2Fhd-wallpaper-desktop-ajgby&psig=AOvVaw3ZwDYuVqQdbcysrl5cfZ7j&ust=1689752053556000&source=images&cd=vfe&opi=89978449&ved=0CA0QjRxqFwoTCIj8xorfl4ADFQAAAAAdAAAAABAR',
+    'assets/movie4.jpg',
+    'assets/peaky.jpg',
+    'assets/Witcher.jpg',
+    'assets/GOT.jpg',
+    'assets/movie1.jpg',
+
+    'assets/movie3.jpg',
     // Add more image URLs here
   ];
 
   @override
   Widget build(BuildContext context) {
     return Container(
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(20),
+      ),
       child: Column(
         children: [
+          SizedBox(
+            height: 20,
+          ),
           CarouselSlider(
             options: CarouselOptions(
               aspectRatio: 16 / 9,
@@ -37,11 +47,12 @@ class _CarouselDemoState extends State<CarouselDemo> {
                     width: MediaQuery.of(context).size.width,
                     margin: EdgeInsets.symmetric(horizontal: 5.0),
                     decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(20),
                       color: Colors.transparent,
                     ),
-                    child: Image.network(
+                    child: Image.asset(
                       url,
-                      fit: BoxFit.cover,
+                      fit: BoxFit.fill,
                     ),
                   );
                 },
