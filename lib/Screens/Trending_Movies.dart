@@ -22,7 +22,7 @@ class TrendingMovies extends StatelessWidget {
                   scrollDirection: Axis.horizontal,
                   itemCount: trending.length,
                   itemBuilder: (context, index) {
-                    return InkWell(
+                    return InkWell( 
                       onTap: () {
                         Navigator.push(
                           context,
