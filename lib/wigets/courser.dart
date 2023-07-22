@@ -32,7 +32,7 @@ class _CarouselDemoState extends State<CarouselDemo> {
           ),
           CarouselSlider(
             options: CarouselOptions(
-              aspectRatio: 16 / 9,
+              aspectRatio: 16 / 12,
               enlargeCenterPage: true,
               onPageChanged: (index, reason) {
                 setState(() {

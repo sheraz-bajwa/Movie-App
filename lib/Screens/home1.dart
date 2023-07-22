@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:movieapp/test.dart';
+import 'package:movieapp/tv.dart';
 import 'package:movieapp/wigets/Fonts.dart';
 import 'package:movieapp/Screens/Tv_shows.dart';
 import 'package:movieapp/wigets/courser.dart';
@@ -80,9 +81,10 @@ class _HomeState extends State<Home> {
           //   trending: trendingmovies,
           // ),
           // Moviessss(
-          //   movies: topratedmovies,
-          // ),
-          Test()
+          //     //movies: topratedmovies,
+          //     ),
+          // Test()
+          TVScreen()
         ],
       ),
     );

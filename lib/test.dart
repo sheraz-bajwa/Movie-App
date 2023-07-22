@@ -10,6 +10,7 @@ class Test extends StatelessWidget {
     return Container(
       child: Column(
         children: [
+          text(data: 'Popular Moviesss', color: Colors.white, size: 30),
           FutureBuilder<List<dynamic>>(
             future: fetchMovies(),
             builder: (context, snapshot) {
