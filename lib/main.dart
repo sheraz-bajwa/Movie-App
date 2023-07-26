@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:movieapp/Screens/home1.dart';
 import 'package:movieapp/test.dart';
+import 'package:movieapp/tv.dart';
 import 'package:tmdb_api/tmdb_api.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-void main() {  
+void main() {
   runApp(const MyApp());
 }
 

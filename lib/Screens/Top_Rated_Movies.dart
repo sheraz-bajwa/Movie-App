@@ -17,6 +17,7 @@ class Moviessss extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           text(data: 'Trending this week', color: Colors.white, size: 30),
           FutureBuilder<List<dynamic>>(

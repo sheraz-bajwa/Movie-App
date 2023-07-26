@@ -9,6 +9,7 @@ class Test extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           text(data: 'Popular Moviesss', color: Colors.white, size: 30),
           FutureBuilder<List<dynamic>>(

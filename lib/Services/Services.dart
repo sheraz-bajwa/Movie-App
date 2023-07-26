@@ -29,8 +29,7 @@ Future<List<dynamic>> fetchMovies() async {
   }
 }
 
-
-Future<Tv> fetchTvData() async {
+Future<Map<String, dynamic>> fetchTvData() async {
   var url = Uri.parse(
       'https://api.themoviedb.org/3/tv/550?api_key=30b971b8d022703bae6fe56e8de391d6');
 
@@ -39,7 +38,9 @@ Future<Tv> fetchTvData() async {
 
     if (response.statusCode == 200) {
       var jsonData = jsonDecode(response.body);
-      return Tv.fromJson(jsonData);
+      //data = jsonDecode(response.body);
+
+      return jsonData;
     } else {
       throw Exception('Request failed with status: ${response.statusCode}');
     }
@@ -47,6 +48,7 @@ Future<Tv> fetchTvData() async {
     throw Exception('Error: $e');
   }
 }
+
 Future<List<dynamic>> trendingMovies() async {
   final String baseUrl = 'https://api.themoviedb.org/3/trending/all/week';
   final String accessToken =
