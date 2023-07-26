@@ -48,22 +48,22 @@ class Tv_Shows extends StatelessWidget {
                                 height: 200,
                                 width: 200,
                               ),
-                              Container(
-                                height: 70,
-                                child: text(
-                                    data: Tv_show[index]['title'] != null
-                                        ? Tv_show[index]['title']
-                                        : ['loading'],
-                                    color: Colors.white,
-                                    size: 20),
-                                // Text(
-                                //   trending[index]['title'] != null
-                                //       ? trending[index]['title']
-                                //       : ['loading'],
-                                //   style: TextStyle(
-                                //       color: Colors.amber, fontSize: 20),
-                                // ),
-                              )
+                              // Container(
+                              //   height: 70,
+                              //   child: text(
+                              //       data: Tv_show[index]['title'] != null
+                              //           ? Tv_show[index]['title']
+                              //           : ['loading'],
+                              //       color: Colors.white,
+                              //       size: 20),
+                              //   // Text(
+                              //   //   trending[index]['title'] != null
+                              //   //       ? trending[index]['title']
+                              //   //       : ['loading'],
+                              //   //   style: TextStyle(
+                              //   //       color: Colors.amber, fontSize: 20),
+                              //   // ),
+                              // )
                             ],
                           ),
                         ),

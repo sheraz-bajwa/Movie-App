@@ -1,7 +1,6 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
-import 'package:movieapp/meethood.dart';
 
 final String apiKey = '30b971b8d022703bae6fe56e8de391d6';
 
@@ -29,23 +28,17 @@ Future<List<dynamic>> fetchMovies() async {
   }
 }
 
-Future<Map<String, dynamic>> fetchTvData() async {
+Future<List<dynamic>> fetchEpisodeList() async {
   var url = Uri.parse(
       'https://api.themoviedb.org/3/tv/550?api_key=30b971b8d022703bae6fe56e8de391d6');
 
-  try {
-    final response = await http.get(url);
+  final response = await http.get(url);
 
-    if (response.statusCode == 200) {
-      var jsonData = jsonDecode(response.body);
-      //data = jsonDecode(response.body);
-
-      return jsonData;
-    } else {
-      throw Exception('Request failed with status: ${response.statusCode}');
-    }
-  } catch (e) {
-    throw Exception('Error: $e');
+  if (response.statusCode == 200) {
+    final data = jsonDecode(response.body);
+    return data["seasons"];
+  } else {
+    throw Exception('Failed to fetch data from the API');
   }
 }
 

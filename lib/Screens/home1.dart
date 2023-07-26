@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:movieapp/test.dart';
+import 'package:movieapp/Services/Services.dart';
+import 'package:movieapp/popularMovies.dart';
 import 'package:movieapp/tv.dart';
 import 'package:movieapp/wigets/Fonts.dart';
 import 'package:movieapp/Screens/Tv_shows.dart';
 import 'package:movieapp/wigets/courser.dart';
-import 'package:movieapp/Screens/Top_Rated_Movies.dart';
-import 'package:movieapp/Screens/Trending_Movies.dart';
+import 'package:movieapp/Screens/Trending.dart';
 import 'package:movieapp/wigets/SideBar.dart';
 import 'package:sidebarx/sidebarx.dart';
 import 'package:tmdb_api/tmdb_api.dart';
@@ -19,7 +19,7 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  List trendingMovies = [];
+  // List trendingMovies = [];
   final String apiKeys = '30b971b8d022703bae6fe56e8de391d6';
   final readaccestoken =
       'eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIzMGI5NzFiOGQwMjI3MDNiYWU2ZmU1NmU4ZGUzOTFkNiIsInN1YiI6IjY0YjE3MTRiMjUzZmFiMGMzNzc1MTE4ZSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.eZiYr4LTWVDEwG-rBCQvUoUXRGLXMjP__z6CQC0l8dA';
@@ -74,21 +74,42 @@ class _HomeState extends State<Home> {
       ),
       body: ListView(
         children: [
-          CarouselDemo(),
-          Tv_Shows(
-            Tv_show: tv,
+          FutureBuilder<List<dynamic>>(
+            future: trendingMovies(),
+            builder: (context, snapshot) {
+              if (snapshot.connectionState == ConnectionState.waiting) {
+                return CircularProgressIndicator();
+              } else if (snapshot.hasError) {
+                return Text('Error: ${snapshot.error}');
+              } else {
+                final List<dynamic> ratedMovies = snapshot.data!;
+                return Container(
+                  height: 300,
+                  child: ListView.builder(
+                    scrollDirection: Axis.horizontal,
+                    itemCount: ratedMovies.length,
+                    itemBuilder: (context, index) {
+                      return Column(
+                        children: [
+                          CarouselDemo(
+                            Imag: 'https://image.tmdb.org/t/p/w500' +
+                                ratedMovies[index]['poster_path'],
+                          ),
+                          // Tv_Shows(
+                          //   Tv_show: tv,
+                          // ),
+                          // popularMovies(),
+                          // Moviessss(
+                          //     //movies: topratedmovies,
+                          //     ),
+                        ],
+                      );
+                    },
+                  ),
+                );
+              }
+            },
           ),
-
-          // TrendingMovies(
-          //   trending: trendingmovies,
-          // ),
-
-          Test(),
-          Moviessss(
-              //movies: topratedmovies,
-              ),
-
-          //TVScreen()
         ],
       ),
     );

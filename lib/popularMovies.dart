@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:movieapp/Services/Services.dart';
+import 'package:movieapp/description/discription.dart';
 import 'package:movieapp/wigets/Fonts.dart';
 
-class Test extends StatelessWidget {
-  const Test({super.key});
+class popularMovies extends StatelessWidget {
+  const popularMovies({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +29,34 @@ class Test extends StatelessWidget {
                     itemCount: movies?.length,
                     itemBuilder: (context, index) {
                       return InkWell(
-                        onTap: () {},
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => Description(
+                                      // cast: '',
+                                      img: 'https://image.tmdb.org/t/p/w500' +
+                                          movies[index]['backdrop_path'],
+                                      story: movies[index]['overview'] != null
+                                          ? movies[index]['overview']
+                                          : ['loading'],
+                                      title: movies[index]['title'] != null
+                                          ? movies[index]['title']
+                                          : ['loading'],
+                                      lang: movies[index]
+                                                  ['original_language'] !=
+                                              null
+                                          ? movies[index]['original_language']
+                                          : ['loading'],
+                                      vote: movies[index]['vote_average']
+                                          .toString(),
+                                      Date: movies[index]['release_date']
+                                          .toString(),
+                                      img2: 'https://image.tmdb.org/t/p/w500' +
+                                          movies[index]['poster_path'],
+                                    )),
+                          );
+                        },
                         child: Padding(
                           padding: const EdgeInsets.all(10.0),
                           child: Container(

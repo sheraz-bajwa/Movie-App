@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 import 'package:flutter/material.dart';
-import 'package:movieapp/Screens/Trending_Movies.dart';
 import 'package:movieapp/Services/Services.dart';
 import 'package:movieapp/wigets/Fonts.dart';
 import 'package:movieapp/description/discription.dart';
@@ -36,7 +35,36 @@ class Moviessss extends StatelessWidget {
                     itemCount: ratedMovies.length,
                     itemBuilder: (context, index) {
                       return InkWell(
-                        onTap: () {},
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => Description(
+                                      // cast: '',
+                                      img: 'https://image.tmdb.org/t/p/w500' +
+                                          ratedMovies[index]['backdrop_path'],
+                                      story:
+                                          ratedMovies[index]['overview'] != null
+                                              ? ratedMovies[index]['overview']
+                                              : ['loading'],
+                                      title: ratedMovies[index]['title'] != null
+                                          ? ratedMovies[index]['title']
+                                          : ['loading'],
+                                      lang: ratedMovies[index]
+                                                  ['original_language'] !=
+                                              null
+                                          ? ratedMovies[index]
+                                              ['original_language']
+                                          : ['loading'],
+                                      vote: ratedMovies[index]['vote_average']
+                                          .toString(),
+                                      Date: ratedMovies[index]['release_date']
+                                          .toString(),
+                                      img2: 'https://image.tmdb.org/t/p/w500' +
+                                          ratedMovies[index]['poster_path'],
+                                    )),
+                          );
+                        },
                         child: Padding(
                           padding: const EdgeInsets.all(10.0),
                           child: Container(
