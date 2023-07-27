@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:movieapp/Services/Services.dart';
-import 'package:movieapp/popularMovies.dart';
-import 'package:movieapp/tv.dart';
+import 'package:movieapp/Screens/popularMovies.dart';
+import 'package:movieapp/Screens/tv.dart';
 import 'package:movieapp/wigets/Fonts.dart';
 import 'package:movieapp/Screens/Tv_shows.dart';
 import 'package:movieapp/wigets/courser.dart';
@@ -10,6 +10,7 @@ import 'package:movieapp/wigets/SideBar.dart';
 import 'package:sidebarx/sidebarx.dart';
 import 'package:tmdb_api/tmdb_api.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:shimmer/shimmer.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -72,45 +73,55 @@ class _HomeState extends State<Home> {
         backgroundColor: Color.fromARGB(255, 39, 48, 55),
         title: text(data: 'MovieB', color: Colors.white, size: 30),
       ),
-      body: ListView(
-        children: [
-          FutureBuilder<List<dynamic>>(
+      body: SingleChildScrollView(
+        scrollDirection: Axis.vertical,
+        child: FutureBuilder<List<dynamic>>(
             future: trendingMovies(),
             builder: (context, snapshot) {
               if (snapshot.connectionState == ConnectionState.waiting) {
-                return CircularProgressIndicator();
+                return ListView.builder(
+                    itemCount: 5,
+                    itemBuilder: (context, index) {
+                      return Shimmer.fromColors(
+                          child: Column(
+                            children: [
+                              ListTile(
+                                leading: Container(
+                                  height: 50,
+                                  width: 50,
+                                  color: Colors.white,
+                                ),
+                                title: Container(
+                                  height: 10,
+                                  width: double.infinity,
+                                  color: Colors.white,
+                                ),
+                                subtitle: Container(
+                                  height: 10,
+                                  width: double.infinity,
+                                  color: Colors.white,
+                                ),
+                              )
+                            ],
+                          ),
+                          baseColor: Colors.grey,
+                          highlightColor: Colors.grey.shade600);
+                    });
               } else if (snapshot.hasError) {
                 return Text('Error: ${snapshot.error}');
               } else {
-                final List<dynamic> ratedMovies = snapshot.data!;
-                return Container(
-                  height: 300,
-                  child: ListView.builder(
-                    scrollDirection: Axis.horizontal,
-                    itemCount: ratedMovies.length,
-                    itemBuilder: (context, index) {
-                      return Column(
-                        children: [
-                          CarouselDemo(
-                            Imag: 'https://image.tmdb.org/t/p/w500' +
-                                ratedMovies[index]['poster_path'],
-                          ),
-                          // Tv_Shows(
-                          //   Tv_show: tv,
-                          // ),
-                          // popularMovies(),
-                          // Moviessss(
-                          //     //movies: topratedmovies,
-                          //     ),
-                        ],
-                      );
-                    },
-                  ),
+                return Column(
+                  children: [
+                    CarouselDemo(),
+                    Tv_Shows(
+                      Tv_show: tv,
+                    ),
+                    popularMovies(),
+                    Moviessss(),
+                  ],
                 );
               }
-            },
-          ),
-        ],
+            }),
       ),
     );
   }

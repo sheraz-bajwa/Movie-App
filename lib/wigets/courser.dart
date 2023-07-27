@@ -2,30 +2,22 @@ import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 
 class CarouselDemo extends StatefulWidget {
-  final Imag;
-
-  //final Currencyy;
-  const CarouselDemo({
-    super.key,
-    required this.Imag,
-    //required this.Currencyy,
-  });
   @override
   _CarouselDemoState createState() => _CarouselDemoState();
 }
 
 class _CarouselDemoState extends State<CarouselDemo> {
   int _currentImageIndex = 0;
-  // final List<String> _imageUrls = [
-  //   'assets/movie4.jpg',
-  //   'assets/peaky.jpg',
-  //   'assets/Witcher.jpg',
-  //   'assets/GOT.jpg',
-  //   'assets/movie1.jpg',
+  final List<String> _imageUrls = [
+    'assets/movie4.jpg',
+    'assets/peaky.jpg',
+    'assets/Witcher.jpg',
+    'assets/GOT.jpg',
+    'assets/movie1.jpg',
 
-  //   'assets/movie3.jpg',
-  //   // Add more image URLs here
-  // ];
+    'assets/movie3.jpg',
+    // Add more image URLs here
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -48,7 +40,7 @@ class _CarouselDemoState extends State<CarouselDemo> {
                 });
               },
             ),
-            items: widget.Imag.keys.toSet().toList().map((url) {
+            items: _imageUrls.map((url) {
               return Builder(
                 builder: (BuildContext context) {
                   return Container(
@@ -67,22 +59,22 @@ class _CarouselDemoState extends State<CarouselDemo> {
               );
             }).toList(),
           ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: widget.Imag.keys.toSet().toList().map((url) {
-              int index = widget.Imag.keys.toSet().toList().map.indexOf(url);
-              return Container(
-                width: 8.0,
-                height: 8.0,
-                margin: EdgeInsets.symmetric(vertical: 10.0, horizontal: 2.0),
-                decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  color:
-                      _currentImageIndex == index ? Colors.blue : Colors.grey,
-                ),
-              );
-            }).toList(),
-          ),
+          // Row(
+          //   mainAxisAlignment: MainAxisAlignment.center,
+          //   children: _imageUrls.map((url) {
+          //     int index = _imageUrls.map.indexOf(url);
+          //     return Container(
+          //       width: 8.0,
+          //       height: 8.0,
+          //       margin: EdgeInsets.symmetric(vertical: 10.0, horizontal: 2.0),
+          //       decoration: BoxDecoration(
+          //         shape: BoxShape.circle,
+          //         color:
+          //             _currentImageIndex == index ? Colors.blue : Colors.grey,
+          //       ),
+          //     );
+          //   }).toList(),
+          // ),
         ],
       ),
     );
