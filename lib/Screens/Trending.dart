@@ -18,7 +18,7 @@ class Moviessss extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          text(data: 'Trending this week', color: Colors.white, size: 30),
+          text(data: 'Trending this week', color: Colors.white, size: 30,Bold: FontWeight.bold,),
           FutureBuilder<List<dynamic>>(
             future: trendingMovies(),
             builder: (context, snapshot) {
@@ -93,13 +93,11 @@ class Moviessss extends StatelessWidget {
                                 SizedBox(height: 5),
                                 Container(
                                   height: 70,
-                                  child: Text(
-                                    ratedMovies[index]['title'],
-                                    style: TextStyle(
+                                  child: text(
+                                      data: ratedMovies[index]['title'],
                                       color: Colors.white,
-                                      fontSize: 20,
-                                    ),
-                                  ),
+                                      Bold: FontWeight.bold,
+                                      size: 20),
                                 ),
                               ],
                             ),

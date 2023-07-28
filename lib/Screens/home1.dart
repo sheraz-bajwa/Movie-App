@@ -11,6 +11,7 @@ import 'package:sidebarx/sidebarx.dart';
 import 'package:tmdb_api/tmdb_api.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:shimmer/shimmer.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -19,7 +20,18 @@ class Home extends StatefulWidget {
   State<Home> createState() => _HomeState();
 }
 
-class _HomeState extends State<Home> {
+class _HomeState extends State<Home> with TickerProviderStateMixin {
+  late final AnimationController _controller =
+      AnimationController(duration: const Duration(seconds: 3), vsync: this)
+        ..repeat();
+
+  @override
+  void dispose() {
+    super.dispose();
+    // TODO: implement setState
+    _controller.dispose();
+  }
+
   // List trendingMovies = [];
   final String apiKeys = '30b971b8d022703bae6fe56e8de391d6';
   final readaccestoken =
@@ -70,8 +82,13 @@ class _HomeState extends State<Home> {
             color: Color.fromARGB(255, 168, 23, 31),
           )
         ],
-        backgroundColor: Color.fromARGB(255, 39, 48, 55),
-        title: text(data: 'MovieB', color: Colors.white, size: 30),
+        backgroundColor: Color(0xFF141E30),
+        title: text(
+          data: 'MovieB',
+          color: Colors.white,
+          size: 30,
+          Bold: FontWeight.bold,
+        ),
       ),
       body: SingleChildScrollView(
         scrollDirection: Axis.vertical,
@@ -79,46 +96,48 @@ class _HomeState extends State<Home> {
             future: trendingMovies(),
             builder: (context, snapshot) {
               if (snapshot.connectionState == ConnectionState.waiting) {
-                return ListView.builder(
-                    itemCount: 5,
-                    itemBuilder: (context, index) {
-                      return Shimmer.fromColors(
-                          child: Column(
-                            children: [
-                              ListTile(
-                                leading: Container(
-                                  height: 50,
-                                  width: 50,
-                                  color: Colors.white,
-                                ),
-                                title: Container(
-                                  height: 10,
-                                  width: double.infinity,
-                                  color: Colors.white,
-                                ),
-                                subtitle: Container(
-                                  height: 10,
-                                  width: double.infinity,
-                                  color: Colors.white,
-                                ),
-                              )
-                            ],
-                          ),
-                          baseColor: Colors.grey,
-                          highlightColor: Colors.grey.shade600);
-                    });
+                return Center(
+                  child: SpinKitFadingCircle(
+                    color: Colors.amberAccent,
+                    size: 50,
+                    controller: _controller,
+                  ),
+                );
               } else if (snapshot.hasError) {
                 return Text('Error: ${snapshot.error}');
               } else {
-                return Column(
-                  children: [
-                    CarouselDemo(),
-                    Tv_Shows(
-                      Tv_show: tv,
+                //final List<dynamic> ratedMovies = snapshot.data!;
+                return Container(
+                  decoration: BoxDecoration(
+                    gradient: LinearGradient(
+                      colors: [
+                        Color(0xFF141E30), // Deep red
+                        // Colors.black, // Black
+
+                        Color(0xFF243B55), // Slightly lighter red
+                      ],
+                      begin: Alignment.centerLeft,
+                      end: Alignment.centerRight,
                     ),
-                    popularMovies(),
-                    Moviessss(),
-                  ],
+                  ),
+                  child: Column(
+                    //mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      CarouselDemo(),
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Column(
+                          children: [
+                            Moviessss(),
+                            Tv_Shows(
+                              Tv_show: tv,
+                            ),
+                            popularMovies()
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
                 );
               }
             }),

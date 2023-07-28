@@ -12,7 +12,12 @@ class popularMovies extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          text(data: 'Popular Moviesss', color: Colors.white, size: 30),
+          text(
+            data: 'Popular Moviesss',
+            color: Colors.white,
+            size: 30,
+            Bold: FontWeight.bold,
+          ),
           FutureBuilder<List<dynamic>>(
             future: fetchMovies(),
             builder: (context, snapshot) {
@@ -90,6 +95,7 @@ class popularMovies extends StatelessWidget {
                                   child: text(
                                       data: movies[index]['title'],
                                       color: Colors.white,
+                                      Bold: FontWeight.bold,
                                       size: 20),
                                 )
                               ],
