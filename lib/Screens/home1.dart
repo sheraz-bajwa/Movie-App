@@ -72,8 +72,12 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
     return Scaffold(
       backgroundColor: Color.fromARGB(255, 49, 66, 74),
       drawer: ExampleSidebarX(),
-      drawerScrimColor: Colors.white,
+      drawerScrimColor: Colors.transparent,
       appBar: AppBar(
+        iconTheme: IconThemeData(
+          color: Color.fromARGB(
+              255, 168, 23, 31), // Set the desired icon color for the sidebar
+        ),
         actions: [
           IconButton(
             onPressed: () {},
@@ -83,11 +87,10 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
           )
         ],
         backgroundColor: Color(0xFF141E30),
-        title: text(
-          data: 'MovieB',
-          color: Colors.white,
-          size: 30,
-          Bold: FontWeight.bold,
+        title: Padding(
+          padding: const EdgeInsets.all(5.0),
+          child: Image.asset('assets/MyTime.png',
+              height: 50, width: MediaQuery.of(context).size.width),
         ),
       ),
       body: SingleChildScrollView(
@@ -96,12 +99,10 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
             future: trendingMovies(),
             builder: (context, snapshot) {
               if (snapshot.connectionState == ConnectionState.waiting) {
-                return Center(
-                  child: SpinKitFadingCircle(
-                    color: Colors.amberAccent,
-                    size: 50,
-                    controller: _controller,
-                  ),
+                return SpinKitFadingCircle(
+                  color: Colors.amberAccent,
+                  size: 50,
+                  controller: _controller,
                 );
               } else if (snapshot.hasError) {
                 return Text('Error: ${snapshot.error}');

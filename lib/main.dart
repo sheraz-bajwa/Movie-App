@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:movieapp/Screens/SplashScreen.dart';
 import 'package:movieapp/Screens/home1.dart';
 import 'package:movieapp/Screens/popularMovies.dart';
 import 'package:movieapp/Screens/tv.dart';
@@ -22,7 +23,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: Home(),
+      home: Splash(),
     );
   }
 }
