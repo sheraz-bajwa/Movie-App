@@ -1,16 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:movieapp/Services/Services.dart';
 import 'package:movieapp/Screens/popularMovies.dart';
-import 'package:movieapp/Screens/tv.dart';
-import 'package:movieapp/wigets/Fonts.dart';
 import 'package:movieapp/Screens/Tv_shows.dart';
 import 'package:movieapp/wigets/courser.dart';
 import 'package:movieapp/Screens/Trending.dart';
 import 'package:movieapp/wigets/SideBar.dart';
-import 'package:sidebarx/sidebarx.dart';
 import 'package:tmdb_api/tmdb_api.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:shimmer/shimmer.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 
 class Home extends StatefulWidget {

@@ -1,10 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:movieapp/Screens/SplashScreen.dart';
-import 'package:movieapp/Screens/home1.dart';
-import 'package:movieapp/Screens/popularMovies.dart';
-import 'package:movieapp/Screens/tv.dart';
-import 'package:tmdb_api/tmdb_api.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 void main() {
   runApp(const MyApp());
